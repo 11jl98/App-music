@@ -1,4 +1,5 @@
  import { userProfile } from "./user";
+ import { filterType } from "./filter";
 
   export type redirectContextType = {
     promptAsync: () => void;
@@ -8,6 +9,12 @@
     getUserProfile: ()=> Promise<void>;
     user: userProfile | undefined,
     idUser :string,
+  };
+
+  export type userFavoritesType = {
+    active: Array<filterType>,
+    getFavorites: (item: filterType)=> void,
+    data: Array<any>
   };
 
   export type getPlaylistsUserType = {
