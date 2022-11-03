@@ -1,12 +1,13 @@
 import { StyleSheet, View } from "react-native";
-import SearchList from "../../components/SearchListen"
+import Header from "../../components/Header";
+import UserFavorites from "../../components/UserFavorites";
 import { UserProvider } from "../../context/user";
-
-export default function Search() {
+export default function Favorites() {
   return (
     <UserProvider>
       <View style={styles.container}>
-        <SearchList />
+        <Header />
+        <UserFavorites/>
       </View>
     </UserProvider>
   );

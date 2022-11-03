@@ -14,8 +14,11 @@ export default function Oauth() {
     "streaming",
     "user-read-email",
     "user-read-private",
+    "user-follow-modify",
+    "user-follow-read",
+    "user-library-read"
   ];
-  const redirectURi: string = "exp://192.168.15.16:19000";
+  const redirectURi: string = "exp://10.0.0.102:19000";
   const discovery: object = {
     authorizationEndpoint: "https://accounts.spotify.com/authorize",
     tokenEndpoint: "https://accounts.spotify.com/api/token",
@@ -28,19 +31,16 @@ export default function Oauth() {
       clientId: clientID,
       scopes: scope,
       usePKCE: false,
-      redirectUri: redirectURi, 
+      redirectUri: redirectURi,
     },
     discovery
   );
   useEffect(() => {
     if (response?.type === "success") {
       const { access_token } = response.params;
-      AsyncStorage.setItem('token',access_token);
-      setTimeout(
-        () =>
-          navigation.navigate('Home' as never),
-        500
-      );
+      console.log(access_token);
+      AsyncStorage.setItem("token", access_token);
+      setTimeout(() => navigation.navigate("Home" as never), 500);
     }
   }, [response]);
 

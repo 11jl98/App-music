@@ -6,6 +6,7 @@ import Login from "./screens/login";
 import Home from "./screens/home";
 import Playlist from "./screens/playlist";
 import Search from "./screens/search";
+import Favorites from "./screens/userFavorites";
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -43,7 +44,7 @@ function MyTabs() {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="Inicio"
         component={Home}
         options={{
           tabBarIcon: ({ focused, color }) => (
@@ -56,12 +57,25 @@ function MyTabs() {
         }}
       />
       <Tab.Screen
-        name="Search"
+        name="Pesquisa"
         component={Search}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Ionicons
               name={!focused ? "search-outline" : "search"}
+              size={24}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Suas playlists"
+        component={Favorites}
+        options={{
+          tabBarIcon: ({ focused, color }) => (
+            <Ionicons
+              name={!focused ? "layers-outline" : "layers"}
               size={24}
               color={color}
             />

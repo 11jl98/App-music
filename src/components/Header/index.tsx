@@ -25,9 +25,12 @@ export default function Hearder(): JSX.Element {
     <View style={styles.container}>
       <View style={styles.content}>
         <Image source={{ uri: user?.images[0].url }} style={styles.image} />
+          <TouchableOpacity onPress={()=>console.log(user?.id)}>
           <Text style={styles.username}>
             {user?.display_name || "JOAO LUIZ"}
           </Text>
+          </TouchableOpacity>
+            
       </View>
     </View>
   );
