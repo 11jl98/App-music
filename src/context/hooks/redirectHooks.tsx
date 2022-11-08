@@ -18,7 +18,7 @@ export default function Oauth() {
     "user-follow-read",
     "user-library-read"
   ];
-  const redirectURi: string = "exp://192.168.15.12:19000";
+  const redirectURi: string = "exp://10.0.0.102:19000";
   const discovery: object = {
     authorizationEndpoint: "https://accounts.spotify.com/authorize",
     tokenEndpoint: "https://accounts.spotify.com/api/token",
