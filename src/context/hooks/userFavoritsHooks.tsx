@@ -8,6 +8,7 @@ import { favorites } from "../../services/favorites";
 export default function Playlists() {
   const [active, setActive] = useState<Array<filterType>>(filter);
   const [data, setData] = useState<Array<any>>([]);
+  const [isActive, setIsActive] = useState<string>("");
 
   function setActiveMood(item: filterType) {
     const isActives = active.filter((e) => e.active === true);
@@ -21,11 +22,12 @@ export default function Playlists() {
   async function getFavorites(item: filterType) {
     setActiveMood(item);
 
-    const { endpoint } = item;
+    const { endpoint, value } = item;
     console.log(endpoint);
     const result = await favorites(endpoint);
     setData(result.items);
+    setIsActive(value)
   }
 
-  return { active, getFavorites, data };
+  return { active, getFavorites, data, isActive };
 }

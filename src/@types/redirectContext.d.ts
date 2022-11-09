@@ -14,7 +14,8 @@
   export type userFavoritesType = {
     active: Array<filterType>,
     getFavorites: (item: filterType)=> void,
-    data: Array<any>
+    data: Array<any>,
+    isActive: string
   };
 
   export type getPlaylistsUserType = {

@@ -10,10 +10,10 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { ContextFvorites } from "../../context/userfavorites";
+import IsActive from "./IsLIstActive";
 
 export default function UserFavorites() {
-  const { active, getFavorites, data } = useContext(ContextFvorites);
-  const navigation = useNavigation()
+  const { active, getFavorites, data, isActive } = useContext(ContextFvorites);
   return (
     <ImageBackground
       source={require("../../assets/playlistsBackground.png")}
@@ -44,26 +44,11 @@ export default function UserFavorites() {
           )}
         />
       </View>
-        <FlatList
-          data={data}
-          keyExtractor={(item, index) => String(index)}
-          renderItem={({ item }) => (
-            <TouchableOpacity  onPress={()=> navigation.navigate("Playlist" as never, {
-              idPlaylist: item.id
-            } as never)} style={styles.data_playlists}>
-                  <View>
-                      <Image
-                        source={{ uri: item?.images[0]?.url }}
-                        style={styles.images_album}
-                      />
-                  </View>
-              <View style={styles.container_description}>
-                <Text style={styles.sub_title}>{item.name}</Text>
-                <Text style={styles.desciption}>{item.description}</Text>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
+      <FlatList
+        data={data}
+        keyExtractor={(item, index) => String(index)}
+        renderItem={({ item }) => <IsActive item={item} isActive={isActive} />}
+      />
     </ImageBackground>
   );
 }
@@ -113,28 +98,5 @@ const styles = StyleSheet.create({
   sub_title_disable: {
     fontSize: 14,
     color: "#fff",
-  },
-  images_album: {
-    width: 130,
-    height: 130,
-    margin: 5,
-  },
-  data_playlists: {
-    flexDirection: "row",
-  },
-  container_description: {
-    margin: 10,
-  },
-  sub_title: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#fff",
-    marginTop: 15,
-  },
-  desciption: {
-    fontSize: 12,
-    color: "#dcdc",
-    marginTop: 15,
-    maxWidth: 230,
   },
 });
