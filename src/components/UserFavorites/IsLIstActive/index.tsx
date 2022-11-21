@@ -65,6 +65,8 @@ export default function isActive({ item, isActive }: any) {
             ))}
           </View>
         </TouchableOpacity>
+
+        
       )}
     </>
   );
