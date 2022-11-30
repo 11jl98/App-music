@@ -23,7 +23,6 @@ export default function Playlists() {
     setActiveMood(item);
 
     const { endpoint, value } = item;
-    console.log(endpoint);
     const result = await favorites(endpoint);
     setData(result.items);
     setIsActive(value)
